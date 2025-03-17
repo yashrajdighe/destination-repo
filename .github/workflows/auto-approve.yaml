@@ -5,9 +5,16 @@ on:
     types: [opened]
 
 jobs:
+  debug-pr-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print PR Creator
+        run: |
+          echo "PR created by: ${{ github.event.pull_request.user.login }}"
+          
   auto-approve:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'update-repository-app'
+    if: github.event.pull_request.user.login == 'yashrajdighe'
     permissions:
       pull-requests: write
     steps:
